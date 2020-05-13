@@ -10,4 +10,6 @@ public interface ContactRepository extends CrudRepository<Contact, Integer>{
 
 	List<Contact> findByStatus(String status);
 	
+	List<Contact> findByIdAndStatus(Integer id, String status);
+		
 }

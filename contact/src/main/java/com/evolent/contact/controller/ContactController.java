@@ -1,5 +1,7 @@
 package com.evolent.contact.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +45,7 @@ public class ContactController {
 			@ApiResponse( code= 500, message = "Internal Server Error")
 	})
 	@GetMapping(value = "/contacts/active")
-	public ResponseEntity<Iterable<ContactResponse>> getAllActiveContacts(){
+	public ResponseEntity<List<ContactResponse>> getAllActiveContacts(){
 		log.info("Inside getAllActiveContacts");
 		return ResponseEntity.ok(contactService.getAllActiveContacts());
 	}
@@ -57,7 +59,7 @@ public class ContactController {
 			@ApiResponse( code= 500, message = "Internal Server Error")
 	})
 	@GetMapping(value = "/contacts", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Iterable<ContactResponse>> getAllContacts(){
+	public ResponseEntity<List<ContactResponse>> getAllContacts(){
 		log.info("Inside getAllContacts");
 		return ResponseEntity.ok(contactService.getAllContacts());
 	}
@@ -71,9 +73,9 @@ public class ContactController {
 			@ApiResponse( code= 500, message = "Internal Server Error")
 	})
 	@GetMapping(value = "/contact/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ContactResponse> getContact(@PathVariable Integer id) throws ContactException{
+	public ResponseEntity<ContactResponse> getActiveContact(@PathVariable Integer id) throws ContactException{
 		log.info("Request get {} ", id);
-		return ResponseEntity.ok(contactService.getContact(id));
+		return ResponseEntity.ok(contactService.getActiveContact(id));
 	}
 	
 	@ApiOperation(value = "Save contact", response = Integer.class, notes= "Save contact",
