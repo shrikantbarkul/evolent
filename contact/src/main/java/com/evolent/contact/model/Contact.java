@@ -26,9 +26,9 @@ public class Contact {
 	
 	private String email;
 	
-	private Long phoneNumber;
+	private String phoneNumber;
 	
-	private Boolean isActive;
+	private String status;
 		
 	private Date createdOn;		
 	
