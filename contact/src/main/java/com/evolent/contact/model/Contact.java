@@ -30,12 +30,8 @@ public class Contact {
 	
 	private Boolean isActive;
 		
-	private Date createdOn;
-		
-	private String createdBy;
+	private Date createdOn;		
 	
 	private Date modifiedOn;
-	
-	private String modifiedBy;
 	
 }
