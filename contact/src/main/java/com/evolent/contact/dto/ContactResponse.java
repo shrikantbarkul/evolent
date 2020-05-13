@@ -1,5 +1,7 @@
 package com.evolent.contact.dto;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,4 +22,8 @@ public class ContactResponse {
 	private String phoneNumber;
 	
 	private String status;
+	
+	private Date createdOn;		
+	
+	private Date modifiedOn;
 }

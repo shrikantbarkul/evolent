@@ -1,5 +1,7 @@
 package com.evolent.contact.dto;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -32,4 +34,7 @@ public class ContactRequest {
 	@Pattern(regexp = "Active|Inactive", message="{contact.status.invalid}")
 	private String status;
 	
+	private Date createdOn;		
+	
+	private Date modifiedOn;
 }
