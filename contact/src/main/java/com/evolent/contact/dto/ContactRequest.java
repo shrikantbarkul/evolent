@@ -36,7 +36,5 @@ public class ContactRequest {
 	@Pattern(regexp = "Active|Inactive", message="{contact.status.invalid}")
 	private String status;
 	
-	private Date createdOn;		
 	
-	private Date modifiedOn;
 }

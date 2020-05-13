@@ -47,6 +47,7 @@ public class ContactService {
 		Optional<Contact> opContact = contactRepository.findById(id);
 		if(opContact.isPresent()) {
 			Contact contact = opContact.get();
+			log.info("Received Contact {}", contact);
 			return contactMapper.mapContactToContactResponse(contact);
 		} else {
 			throw new ContactException("Contact Not Found for id =" + id);
@@ -54,15 +55,15 @@ public class ContactService {
 	}
 
 	public Integer saveContact(ContactRequest contactRequest) {
-		contactRequest.setCreatedOn(Date.from(LocalDateTime.now().atOffset(ZoneOffset.UTC).toInstant()));
 		Contact contact =  contactMapper.mapContactRequestToContact(contactRequest);
+		contact.setCreatedOn(Date.from(LocalDateTime.now().atOffset(ZoneOffset.UTC).toInstant()));
 		contact = contactRepository.save(contact);
 		return contact.getId();
 	}
 
 	public Integer updateContact(ContactRequest contactRequest) {
-		contactRequest.setModifiedOn(Date.from(LocalDateTime.now().atOffset(ZoneOffset.UTC).toInstant()));
 		Contact contact =  contactMapper.mapContactRequestToContact(contactRequest);
+		contact.setModifiedOn(Date.from(LocalDateTime.now().atOffset(ZoneOffset.UTC).toInstant()));
 		contact = contactRepository.save(contact);
 		return contact.getId();
 	}
