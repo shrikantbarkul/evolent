@@ -1,6 +1,5 @@
-package com.evolent.contact.service;
+package com.evolent.contact.controller;
 
-import javax.print.attribute.standard.Media;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.evolent.contact.dto.ContactRequest;
 import com.evolent.contact.dto.ContactResponse;
+import com.evolent.contact.service.ContactService;
 import com.evolent.contact.service.exception.ContactException;
 
 import io.swagger.annotations.Api;

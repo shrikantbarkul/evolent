@@ -29,12 +29,12 @@ public class ContactException extends Exception {
 		super(statusMessage, exception);
 	}
 
-	public ContactException(HttpStatus httpStatus, String statusMessage) {
+	public ContactException(HttpStatus statusCode, String statusMessage) {
 		super(statusMessage);
 		this.statusCode = statusCode;
 	}
 
-	public ContactException(HttpStatus httpStatus, String statusMessage, Exception exception) {
+	public ContactException(HttpStatus statusCode, String statusMessage, Exception exception) {
 		super(statusMessage, exception);
 		this.statusCode = statusCode;
 	}

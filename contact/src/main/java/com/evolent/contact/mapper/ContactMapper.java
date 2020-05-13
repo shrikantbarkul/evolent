@@ -1,12 +1,12 @@
-package com.evolent.contact.dto;
+package com.evolent.contact.mapper;
 
 import java.util.List;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.NullValueCheckStrategy;
 
+import com.evolent.contact.dto.ContactRequest;
+import com.evolent.contact.dto.ContactResponse;
 import com.evolent.contact.model.Contact;
 
 @Mapper(componentModel = "spring", nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)

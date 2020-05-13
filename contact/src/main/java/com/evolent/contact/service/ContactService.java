@@ -10,9 +10,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.evolent.contact.dto.ContactMapper;
 import com.evolent.contact.dto.ContactRequest;
 import com.evolent.contact.dto.ContactResponse;
+import com.evolent.contact.mapper.ContactMapper;
 import com.evolent.contact.model.Contact;
 import com.evolent.contact.repository.ContactRepository;
 import com.evolent.contact.service.exception.ContactException;
