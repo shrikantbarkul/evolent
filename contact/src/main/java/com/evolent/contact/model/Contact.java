@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @Getter
 @Setter
 @Entity
+@ToString
 public class Contact {
 
 	@Id
