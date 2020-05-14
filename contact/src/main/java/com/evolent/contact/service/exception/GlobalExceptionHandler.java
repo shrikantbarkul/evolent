@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 		
 		TraceableError error = TraceableError.builder()
 				.errorCode(exception.getStatusCode().toString())
-				.errorDescription(exception.getCause().toString())
+				.errorDescription((null != exception.getCause())?exception.getCause().toString():"")
 				.exceptionType(exception.getClass().getSimpleName())
 				.exceptionMessage(exception.getMessage())
 				.build();

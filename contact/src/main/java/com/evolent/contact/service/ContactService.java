@@ -31,7 +31,7 @@ public class ContactService {
 	
 	public List<ContactResponse> getAllActiveContacts() {
 		List<Contact> contactList = contactRepository.findByStatus(ContactConstant.ACTIVE);
-		log.info("Number of contact found {} " + contactList.size());
+		log.info("Number of contact found {} " + contactList.size());		
 		return contactMapper.mapContactListToContactResponseList(contactList);
 	}
 	

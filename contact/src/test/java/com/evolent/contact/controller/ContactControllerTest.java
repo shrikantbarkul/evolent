@@ -16,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.evolent.contact.dto.ContactRequest;
+import com.evolent.contact.dto.ContactRequest.ContactRequestBuilder;
 import com.evolent.contact.dto.ContactResponse;
+import com.evolent.contact.model.Contact;
 import com.evolent.contact.service.exception.ContactException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,8 +37,10 @@ class ContactControllerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		log.info("Test Case Setup : Started");
-		contactRequest = ContactRequest.builder().email("shrikantbarkul@gmail.com").firstName("Shrikant").id(1)
-				.lastName("Barkul").phoneNumber("8600026600").status("Active").build();
+		ContactRequestBuilder contactRequestBuilder = ContactRequest.builder().email("shrikantbarkul@gmail.com").firstName("Shrikant").id(1)
+				.lastName("Barkul").phoneNumber("8600026600").status("Active");
+		log.info("Builder Object {}" ,contactRequestBuilder);
+		contactRequest = contactRequestBuilder.build();
 		log.info("Test Case Setup : End");
 	}
 
@@ -52,7 +56,12 @@ class ContactControllerTest {
 	@Test
 	@Order(4)
 	void testUpdateContact() {
+		contactRequest.setEmail("shrikantbarkul@hotmail.com");
 		contactRequest.setPhoneNumber("9284498568");
+		contactRequest.setFirstName("firstName");
+		contactRequest.setLastName("lastName");
+		contactRequest.setStatus("Active");
+		contactRequest.setId(1);
 		ResponseEntity<Integer> responseEntity = contactController.updateContact(contactRequest);
 		assertEquals(1, responseEntity.getBody());
 
@@ -70,15 +79,16 @@ class ContactControllerTest {
 	@Test
 	@Order(3)
 	void testGetContact() throws ContactException {
-		ResponseEntity<ContactResponse> responseEntity = contactController.getActiveContact(contactRequest.getId());
+		ResponseEntity<ContactResponse> responseEntity = contactController.getActiveContact(contactRequest.getId());		
 		assertEquals(1, responseEntity.getBody().getId());
-
+		log.info("Response : {} ", responseEntity.getBody().toString());		
 	}
 
 	@Test
 	@Order(1)
 	void testSaveContact() {
-		ResponseEntity<Integer> responseEntity = contactController.saveContact(contactRequest);
+		log.info("Request {}", contactRequest);
+		ResponseEntity<Integer> responseEntity = contactController.saveContact(contactRequest);		
 		assertEquals(1, responseEntity.getBody());
 	}
 
@@ -105,5 +115,13 @@ class ContactControllerTest {
 		assertThatExceptionOfType(ContactException.class)
 		.isThrownBy(() -> contactController.getActiveContact(contactRequest.getId()));
 		
+	}
+	
+	@Test
+	@Order(9)
+	void testUpdateContactAfterDelete() {
+		assertThatExceptionOfType(ContactException.class)
+		.isThrownBy(() -> contactController.deleteContact(contactRequest.getId()));
+
 	}
 }
